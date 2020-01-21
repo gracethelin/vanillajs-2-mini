@@ -1,29 +1,36 @@
-function addTodo(event){
-    event.preventDefault();
-    const item = document.createElement('li');
-    item.innerText = document.getElementById('item').value;
-    item.addEventListener('click', completeTodo);
+console.log('connected')
 
-    const button = document.createElement('button');
-    button.innerText = 'x';
-    button.addEventListener('click', removeTodo)
-    item.appendChild(button);
 
-    const list = document.querySelector('ul');
-    list.appendChild(item)
+function addToDo(event){
+    event.preventDefault()
+const item = document.createElement('li')
+item.innerText = document.getElementById('item').value
+item.addEventListener('click', completeToDo)
+
+const button = document.createElement('button')
+button.innerText = 'X'
+button.addEventListener('click', removeToDo)
+item.append(button)
+
+const list = document.querySelector('ul')
+// list.append(button)
+list.appendChild(item)
+
 }
 
-document.querySelector('form').addEventListener('submit', addTodo);
-
-function removeTodo(event){
+function removeToDo(event){
     event.target.parentNode.remove()
 }
 
-function completeTodo(event){
-    const checked = event.target.getAttribute('aria-checked')
-    if(checked === 'true'){
-        event.target.setAttribute('aria-checked', 'false')
-    } else {
+function completeToDo(event){
+    const value = event.target.getAttribute('aria-checked')
+
+    if(value !== "true"){
         event.target.setAttribute('aria-checked', 'true')
+        else {
+            event.target.setAttribute('aria-checked', 'false')
+        }
+
     }
 }
+document.querySelector('form').addEventListener('submit', addToDo)
